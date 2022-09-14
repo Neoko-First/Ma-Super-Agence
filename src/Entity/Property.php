@@ -12,8 +12,8 @@ class Property
 {
 
     const HEAT = [
-        0 => 'electric',
-        1 => 'gaz'
+        0 => 'Électrique',
+        1 => 'Gaz'
     ];
 
     #[ORM\Id]
@@ -65,7 +65,7 @@ class Property
         $this->created_at = new \DateTime();
     }
 
-    public function getId(): ?int
+    public function getId(): ?int 
     {
         return $this->id;
     }
@@ -82,6 +82,7 @@ class Property
         return $this;
     }
 
+    // génère un slug pour nos liens
     public function getSlug(): string  
     {
         return (new Slugify())->slugify($this->title);
@@ -174,6 +175,12 @@ class Property
         $this->heat = $heat;
 
         return $this;
+    }
+
+    // déduit le type de chauffage du bien
+    public function getHeatType(): string
+    {
+        return self::HEAT[$this->heat];
     }
 
     public function getCity(): ?string
