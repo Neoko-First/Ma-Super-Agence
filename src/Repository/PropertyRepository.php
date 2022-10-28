@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -42,14 +43,12 @@ class PropertyRepository extends ServiceEntityRepository
      * @return Property[]
      */
     public function findLatest () {
-        return $this->createQueryBuilder('p')
-            // recherche les lignes ou sold est à false
-            ->where('p.sold = false')
+        return $this->findVisibleQuery()
             ->setMaxResults(4)
             // recup la requête
             ->getQuery()
             // recup la reponse
-            ->getResult();
+            ->getResult(); 
     }
 
     public function add(Property $entity, bool $flush = false): void
@@ -68,6 +67,13 @@ class PropertyRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    private function findVisibleQuery()
+    { 
+        // recherche les lignes ou sold est à false 
+        return $this->createQueryBuilder('p')
+        ->where('p.sold = false');
     }
 
 //    /**
