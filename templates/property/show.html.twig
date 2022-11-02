@@ -1,57 +1,60 @@
 {% extends 'base.html.twig' %}
-{% block title %}{{ property.title }}{% endblock %}
+{% block title %}
+	{{ property.title }}
+{% endblock %}
 {% block body %}
-    <div class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-            
-                </div>
-                <div class="col-md-4">
-                    <h1>{{ property.title }}</h1>
-                    <h2>{{ property.rooms }} pièces - {{ property.surface }} m²</h2>
-                    <div class="text-primary" style="font-size: 4rem;font-weight:bold;">{{ property.formattedPrice }} €</div>
-                    <a class="btn btn-primary" href="#">Contacter l'agence</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container mt-4">
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-md-8"></div>
+			<div class="col-md-4">
+				<h1>{{ property.title }}</h1>
+				<h2>{{ property.rooms }}
+					pièces -
+					{{ property.surface }}
+					m²</h2>
+				<div class="text-primary" style="font-size: 4rem;font-weight:bold;">{{ property.formattedPrice }}
+					€</div>
+				<a class="btn btn-primary" href="#">Contacter l'agence</a>
+			</div>
+		</div>
+	</div>
+	<div class="container mt-4">
 
-        <nav class="btn btn-primary"></nav>
+		<nav class="btn btn-primary"></nav>
 
-        {# nl2br permet de faire des saut de ligne lorsque le contenu en comporte #}
-        <p>{{ property.description | nl2br }}</p>
+		{# nl2br permet de faire des saut de ligne lorsque le contenu en comporte #}
+		<p>{{ property.description | nl2br }}</p>
 
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Caractéristiques</h2>
-                <table class="table table-striped">
-                    <tr>
-                        <td>Surface habitable</td>
-                        <td>{{ property.surface }} m²</td>
-                    </tr>
-                    <tr>
-                        <td>Pièce(s)</td>
-                        <td>{{ property.rooms }}</td>
-                    </tr>
-                    <tr>
-                        <td>Chambres(s)</td>
-                        <td>{{ property.bedrooms }}</td>
-                    </tr>
-                    <tr>
-                        <td>Étage(s)</td>
-                        <td>{{ property.floor }}</td>
-                    </tr>
-                    <tr>
-                        <td>Chauffage</td>
-                        <td>{{ property.heatType }}</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-4">
-                <h2>Caractéristiques</h2>
-            </div>
-        </div>
-    </div>
+		<div class="row">
+			<div class="col-md-8">
+				<h2>Caractéristiques</h2>
+				<table class="table table-striped">
+					<tr>
+						<td>Surface habitable</td>
+						<td>{{ property.surface }}
+							m²</td>
+					</tr>
+					<tr>
+						<td>Pièce(s)</td>
+						<td>{{ property.rooms }}</td>
+					</tr>
+					<tr>
+						<td>Chambres(s)</td>
+						<td>{{ property.bedrooms }}</td>
+					</tr>
+					<tr>
+						<td>Étage(s)</td>
+						<td>{{ property.floor }}</td>
+					</tr>
+					<tr>
+						<td>Chauffage</td>
+						<td>{{ property.heatType }}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-4">
+				<h2>Caractéristiques</h2>
+			</div>
+		</div>
+	</div>
 {% endblock %}

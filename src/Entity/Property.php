@@ -13,7 +13,8 @@ class Property
 
     const HEAT = [
         0 => 'Électrique',
-        1 => 'Gaz'
+        1 => 'Gaz',
+        2 => 'Fuel',
     ];
 
     #[ORM\Id]
